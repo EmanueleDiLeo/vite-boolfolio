@@ -1,12 +1,12 @@
 <script>
 import axios from 'axios';
 import {store} from './data/store';
-import ProjectCard from './components/ProjectCard.vue';
+import ContainerCard from './components/ContainerCard.vue';
 
 export default{
   name: 'App',
   components: {
-    ProjectCard
+    ContainerCard
   },
   methods:{
     getApi(){
@@ -26,7 +26,7 @@ export default{
 
 <template>
   <div class="container py-5">
-    <ProjectCard/>
+    <ContainerCard/>
   </div>
 
 </template>
