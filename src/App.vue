@@ -1,28 +1,32 @@
 <script>
 import axios from 'axios';
-import store from './data/store';
+import {store} from './data/store';
+import ProjectCard from './components/ProjectCard.vue';
+
 export default{
   name: 'App',
-  data(){
-    return {
-      titolo : "test"
-    }
+  components: {
+    ProjectCard
   },
   methods:{
     getApi(){
       axios.get(store.apiUrl + 'projects')
         .then(results => {
           console.log(results.data);
+          store.projects = results.data;
         })
     }
   },
+  mounted(){
+    this.getApi();
+  }
 }
 
 </script>
 
 <template>
-  <div class="container">
-    <h1>{{ titolo }}</h1>
+  <div class="container py-5">
+    <ProjectCard/>
   </div>
 
 </template>
