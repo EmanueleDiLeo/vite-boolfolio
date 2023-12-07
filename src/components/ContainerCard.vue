@@ -1,6 +1,6 @@
 <script>
 import {store} from '../data/store'
-import ProjectCard from './ProjectCard.vue';
+import ProjectCard from './partials/ProjectCard.vue';
 
 export default{
   name: 'ContainerCard',
@@ -10,7 +10,7 @@ export default{
   data(){
     return {
       store,
-      titolo : "I Miei Progetti"
+      titolo : "I Miei Progetti",
     }
   },
   methods:{
