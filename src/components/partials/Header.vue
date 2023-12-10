@@ -31,9 +31,15 @@ export default{
       list-style: none;
       li{
         padding: 10px;
-        router-link{
+        a{
           text-decoration: none;
-          color: white;
+          color: white; 
+          &:hover{
+            border-bottom: 1px solid white;
+          }
+          &.active{
+            border-bottom: 3px solid white;
+          }
         }
       }
     }

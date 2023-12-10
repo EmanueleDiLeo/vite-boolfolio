@@ -7,7 +7,7 @@ export default{
 
 <template>
 
-
+<h1 class="text-center">Percorso Sbagliato</h1>
 
 </template>
 
