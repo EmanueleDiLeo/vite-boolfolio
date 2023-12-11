@@ -4,6 +4,7 @@ import Home from './pages/Home.vue'
 import Project from './pages/Project.vue'
 import ShowProject from './pages/ShowProject.vue'
 import About from './pages/About.vue'
+import Contact from './pages/Contact.vue'
 import Error404 from './pages/Error404.vue'
 
 const router = createRouter({
@@ -31,9 +32,15 @@ const router = createRouter({
       name:'about',
       component:About,
     },
+    {
+      path:'/contatti',
+      name:'contact',
+      component:Contact,
+    },
     //Si mette per ultimo perche altrimenti prende pure le rotte precedenti
     {
       path:'/:patMatch(.*)*',
+      name: 'error-404',
       component:Error404,
     }
   ]

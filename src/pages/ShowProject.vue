@@ -1,21 +1,29 @@
 <script>
 import axios from 'axios';
 import {store} from '../data/store';
+import Loader from '../components/partials/Loader.vue'
 
 export default {
   name:'ShowProject',
   data() {
     return {
-      project:{}
+      project:{},
+      isLoader: false,
     }
+  },
+  components:{
+    Loader
   },
   methods: {
     getApi(slug){
       axios.get(store.apiUrl + 'projects/get-project/' + slug)
         .then(results => {
-          this.isLoader = true;
           console.log(results.data);
-          this.project = results.data;
+          if(!results.data.success){
+            this.$router.push({ name: 'error-404' })
+          }
+          this.isLoader = true;
+          this.project = results.data.project;
         })
     }
   },
@@ -28,9 +36,12 @@ export default {
 
 <template>
   <div class="container">
-    <h1>Dettagli progetto {{ project.name }}</h1>
-    <span> <strong>Numero versione:</strong>  v-{{ project.version }} | <strong>Data ultimo aggiornamento:</strong> {{ project.date_updated }}</span>
-    <p>{{ project.description }}</p>
+    <Loader v-if="!isLoader"/>
+    <div class="container" v-else>
+      <h1>Dettagli progetto {{ project.name }}</h1>
+      <span> <strong>Numero versione:</strong>  v-{{ project.version }} | <strong>Data ultimo aggiornamento:</strong> {{ project.date_updated }}</span>
+      <p>{{ project.description }}</p>
+    </div>
   </div>
 </template>
 

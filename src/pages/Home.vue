@@ -7,7 +7,9 @@ export default{
 
 <template>
 
-<h1>Home</h1>
+<div class="container">
+  <h1 class="text-center">Home</h1>
+</div>
 
 </template>
 

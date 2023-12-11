@@ -7,7 +7,10 @@ export default{
 
 <template>
 
-<h1 class="text-center">Percorso Sbagliato</h1>
+<div class="container">
+  <h1 class="text-center">Errore 404</h1>
+  <h4 class="text-center">Percorso sbagliato</h4>
+</div>
 
 </template>
 

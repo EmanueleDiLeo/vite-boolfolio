@@ -18,6 +18,9 @@ export default{
       <li>
         <router-link :to="{name: 'about'}">Chi Siamo</router-link>
       </li>
+      <li>
+        <router-link :to="{name: 'contact'}">Contatti</router-link>
+      </li>
     </ul>
   </nav>
 </header>
@@ -27,18 +30,23 @@ export default{
 
 <style lang="scss" scoped>
   header{
+    position: fixed;
+    width: 100%;
+    background-color: #EC8F5E;
+    z-index: 999;
     ul{
       list-style: none;
       li{
         padding: 10px;
         a{
           text-decoration: none;
-          color: white; 
+          color: #F1EB90; 
           &:hover{
-            border-bottom: 1px solid white;
+            border-bottom: 1px solid #F1EB90;
           }
           &.active{
             border-bottom: 3px solid white;
+            color: white; 
           }
         }
       }

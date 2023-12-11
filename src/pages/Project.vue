@@ -15,31 +15,44 @@ export default{
   data(){
     return {
       isLoader:false,
+      paginator:{
+        links: [],
+        firstPageUrl:'',
+        lastPageUrl:'',
+        currentPage:'',
+        lastPage:'',
+      },
     }
   },
   methods:{
-    getApi(){
-      axios.get(store.apiUrl + 'projects')
+    getApi(endpoint){
+      this.isLoader = false,
+      axios.get(endpoint)
         .then(results => {
           this.isLoader = true;
           console.log(results.data.data);
           store.projects = results.data.data;
+          this.paginator.links = results.data.links;
+          this.paginator.firstPageUrl = results.data.first_page_url;
+          this.paginator.lastPageUrl = results.data.last_page_url;
+          this.paginator.currentPage = results.data.current_page;
+          this.paginator.lastPage = results.data.last_page;
         })
     }
   },
   mounted(){
-    this.getApi();
+    this.getApi(store.apiUrl + 'projects');
   }
 }
 
 </script>
 
 <template>
-  <div class="container py-5">
+  <div class="container">
     <Loader v-if="!isLoader"/>
     <div v-else>
       <ContainerCard />
-      <Navigator />
+      <Navigator :paginator="paginator" @callApi="getApi"/>
     </div>
   </div>
 
