@@ -34,6 +34,7 @@ export default{
     width: 100%;
     background-color: #EC8F5E;
     z-index: 999;
+    border-bottom: 1px solid #F1EB90;
     ul{
       list-style: none;
       li{
